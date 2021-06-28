@@ -23,7 +23,8 @@ screen.onkey(snake.down, 's')
 screen.onkey(snake.left, 'a')
 screen.onkey(snake.right, 'd')
 
-while True:
+game_on=True
+while game_on:
     screen.update()
     time.sleep(.1)
     snake.move()
@@ -32,12 +33,22 @@ while True:
     if snake.snake_body[0].distance(food) < 15:
         print('nom')
         food.refresh()
+        snake.extend()
         scoreboard.score_point()
 
     #detect collision with outer boundaries
     head = snake.snake_body[0]
     if head.xcor() > 280 or head.xcor() < -280 or head.ycor() > 280 or head.ycor() < -280:
         scoreboard.game_over()
-        break
+        game_on = False
+
+    #detect collision with tail
+    for segment in snake.snake_body:
+        if segment == snake.head:
+            pass
+        else:
+            if snake.head.distance(segment) < 10:
+                scoreboard.game_over()
+                game_on = False
 
 screen.exitonclick()
