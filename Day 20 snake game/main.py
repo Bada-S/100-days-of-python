@@ -34,4 +34,10 @@ while True:
         food.refresh()
         scoreboard.score_point()
 
+    #detect collision with outer boundaries
+    head = snake.snake_body[0]
+    if head.xcor() > 280 or head.xcor() < -280 or head.ycor() > 280 or head.ycor() < -280:
+        scoreboard.game_over()
+        break
+
 screen.exitonclick()
