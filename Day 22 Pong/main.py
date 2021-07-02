@@ -62,4 +62,5 @@ while game_on:
         ball.clear()
         scoreboard.win_game('2')
         break
+
 screen.exitonclick()
