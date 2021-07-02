@@ -1,6 +1,8 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
+from center_line import CenterLine
 import time
 
 screen = Screen()
@@ -12,6 +14,8 @@ screen.tracer(0)
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350,0))
 ball = Ball()
+scoreboard = Scoreboard()
+center_line = CenterLine()
 
 screen.listen()
 screen.onkey(r_paddle.go_up, "Up")
@@ -29,9 +33,20 @@ while game_on:
 
     # detects when ball either hits paddle or misses
     if abs(ball.xcor()) > 340:
-        if (ball.distance(r_paddle) < 50) or (ball.distance(l_paddle) < 50):
+        if ball.distance(r_paddle) < 50:
+            ball.paddle_bounce()
+
+        elif ball.distance(l_paddle) < 50:
             ball.paddle_bounce()
         else:
+            if ball.xcor()>0:
+                scoreboard.left_score()
+                scoreboard.clear()
+                scoreboard.write_score()
+            else:
+                scoreboard.right_score()
+                scoreboard.clear()
+                scoreboard.write_score()
             ball.reset()
 
 screen.exitonclick()

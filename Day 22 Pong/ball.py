@@ -1,5 +1,6 @@
 from turtle import Turtle
 
+
 class Ball(Turtle):
 
     def __init__(self):
@@ -8,8 +9,8 @@ class Ball(Turtle):
         self.color('white')
         self.penup()
         self.shapesize(.5, .5)
-        self.x_move = 2.5
-        self.y_move = 2.5
+        self.x_move = 5
+        self.y_move = 5
 
     def move(self):
         new_x = self.xcor() + self.x_move
@@ -23,4 +24,7 @@ class Ball(Turtle):
         self.x_move *= -1
 
     def reset(self):
-        self.goto(0,0)
+        if self.y_move < 0:
+            self.goto(0, 300)
+        else:
+            self.goto(0, -300)
