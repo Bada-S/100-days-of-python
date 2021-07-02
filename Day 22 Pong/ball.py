@@ -9,8 +9,9 @@ class Ball(Turtle):
         self.color('white')
         self.penup()
         self.shapesize(.5, .5)
-        self.x_move = 5
-        self.y_move = 5
+        self.x_move = 3.5
+        self.y_move = 3.5
+        self.start = 1
 
     def move(self):
         new_x = self.xcor() + self.x_move
@@ -24,7 +25,11 @@ class Ball(Turtle):
         self.x_move *= -1
 
     def reset(self):
-        if self.y_move < 0:
+        if self.start == 1:
             self.goto(0, 300)
+            self.y_move = -3.5
+            self.start = 0
         else:
             self.goto(0, -300)
+            self.y_move = 3.5
+            self.start = 1

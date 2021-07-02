@@ -28,15 +28,15 @@ while game_on:
     ball.move()
     time.sleep(.01)
     screen.update()
-    if abs(ball.ycor()) == 300:
+    if abs(ball.ycor()) >= 300:
         ball.bounce()
 
     # detects when ball either hits paddle or misses
     if abs(ball.xcor()) > 340:
-        if ball.distance(r_paddle) < 50:
+        if ball.distance(r_paddle) <= 50:
             ball.paddle_bounce()
 
-        elif ball.distance(l_paddle) < 50:
+        elif ball.distance(l_paddle) <= 50:
             ball.paddle_bounce()
         else:
             if ball.xcor()>0:
