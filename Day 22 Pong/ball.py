@@ -21,4 +21,6 @@ class Ball(Turtle):
 
     def paddle_bounce(self):
         self.x_move *= -1
-        #self.y_move *= -1
+
+    def reset(self):
+        self.goto(0,0)
