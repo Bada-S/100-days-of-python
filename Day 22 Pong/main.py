@@ -49,4 +49,17 @@ while game_on:
                 scoreboard.write_score()
             ball.reset()
 
+    # games ends when a player wins
+    if scoreboard.l_score == 11:
+        scoreboard.clear()
+        center_line.clear()
+        ball.clear()
+        scoreboard.win_game('1')
+        break
+    elif scoreboard.r_score == 11:
+        scoreboard.clear()
+        center_line.clear()
+        ball.clear()
+        scoreboard.win_game('2')
+        break
 screen.exitonclick()
